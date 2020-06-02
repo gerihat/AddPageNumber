@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Numeraci&oacute;n de p&aacute;ginas</title>
+    <meta http-equiv="x-ua-compatible" content="ie=9" />
+    <script language="VBScript">
+		Sub window_onLoad()
+			CenterWindow 480, 480
+		End Sub</script>
+
+    <HTA:APPLICATION
+        APPLICATIONNAME = "Numeracion de paginas"
+        BORDER = "thin"
+    	CAPTION = "yes"
+    	SHOWINTASKBAR = "yes"
+    	SINGLEINSTANCE = "yes"
+    	MAXIMIZEBUTTON="no"
+     	MINIMIZEBUTTON="yes"
+    	VERSION = "1.0"
+    	WINDOWSTATE="normal"
+    />
+    <style>
+    	body {
+    		font-family: Helvetica, sans-serif;
+    		font-size: 14px;
+			padding : 1em;
+			margin  : 0;
+    	}
+    	div {
+    		display:block;
+    		padding:0.4em;
+    	}
+    	
+    	.column {
+		  float: left;
+		  width: 40%;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+		  content: "";
+		  display:table;  
+		  clear: both;
+		}
+		div#inputs {
+    		border:1px solid #eee;
+    	}
+		p.small {
+			font-size: 0.7em;
+		}
+		hr {
+			border: 1px dotted #eee;
+		}
+		form {
+		  position: relative;
+		  margin : 0 auto
+		}    	
+		input, textarea, select, button {
+ 		   margin: 0;
+
+		  -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+		     -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+		          box-sizing: border-box;		         
+		}
+
+		input {
+			 border: 1px dotted #999;
+			 border-radius: 2;
+			  -webkit-appearance: none;
+			}
+		input[type:text] {			 
+			 width: 20px
+		}
+		input[type:file] {
+			 width:300px
+			 border: 3px dotted #999;
+			  -webkit-appearance: none;
+		}
+		
+		button {
+		  padding      : 5px;
+		  font         : 1.5em sans-serif;
+		  border       : 2px solid #333;
+		  border-radius: 5px;
+		  background   : none;
+
+		  cursor       : pointer;
+		}
+		button:hover {
+		  background: #eee
+		}
+    </style>
+    <script language="VBScript" src="AddPageNumber_hta.vbs"></script>
+</head>
+ 
+<body>
+    <h1>Paginaci&oacute;n de PDF</h1>
+    <form action="" method="">
+    <div id="inputs">
+    	<div><label for="fname_in">Selecciona fichero:</label>
+		<input type="file" id="fname_in" name="fname_in"></div>
+		<div class="row">
+			<div class="column">
+			<label for="fromPage">P&aacute;gina Inicial</label>
+			<input type="number" size="2" id="fromPage" name="fromPage" value="1"></div>
+			<div class="column">
+			<label for="startPageNumber">Numeraci&oacute;n inicial</label>
+			<input type="number" size="2" id="startPageNumber" name="startPageNumber" value="1"></div>
+		</div>
+
+		<div class="row">
+			<div class="column">
+			<label for="toPage">P&aacute;gina Final</label>
+			<input type="number" size="2" id="toPage" name="toPage" value="0"></div>
+			<div class="column">
+			<label for="numberOfPages">Numeraci&oacute;n final</label>
+			<input type="number" size="2" id="numberOfPages" name="numberOfPages" value="0"></div>
+		</div>		
+		<div class="row">
+			<div class="column">
+				<label for="pageNumberPosition">Posici&oacute;n</label>
+				<select id="pageNumberPosition" name="pageNumberPosition">
+				<option value="1">1: Arriba izquierda</option>
+				<option value="2">2: Arriba centro</option>
+				<option value="3" selected>3: Arriba derecha</option>
+				<option value="4">4: Abajo izquierda</option>
+				<option value="5">5: Abajo centro</option>
+				<option value="6">6: Abajo derecha</option>
+				</select></div>
+		</div>
+		<div style="clear: both"></div>
+		<hr>
+		<div style="clear: both; padding:.8em">
+		<button type="button" onclick="AddPageNumber(fname_in, fromPage, toPage, startPageNumber, numberOfPages, pageNumberPosition)" id="RunButton" name="RunButton">Ejecutar</button></div>
+	</div>
+	</form>
+
+</body>
+ 
+</html>
