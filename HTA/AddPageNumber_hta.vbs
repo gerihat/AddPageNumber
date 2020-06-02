@@ -51,6 +51,8 @@ Sub AddPageNumber(fname_in, fromPage, toPage, startPageNumber, numberOfPages, pa
 
 	pdf.AddPageNumberToPDFFile mFname_in, mFname_out, mFromPage, mToPage, mStartPageNumber, mNumberOfPages, mPageNumberPosition, mBorderXMillimeter, mBorderYMillimeter, (pdfText)
 
+	WshShell.Run mFname_out
+
 	Set pdfText = Nothing
 	Set pdf = Nothing
 	Set WshShell=Nothing
