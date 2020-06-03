@@ -49,9 +49,12 @@ Sub AddPageNumber(fname_in, fromPage, toPage, startPageNumber, numberOfPages, pa
 	mBorderXMillimeter 	= 10.0
 	mBorderYMillimeter 	= 10.0
 
+	pgBar "begin"
 	pdf.AddPageNumberToPDFFile mFname_in, mFname_out, mFromPage, mToPage, mStartPageNumber, mNumberOfPages, mPageNumberPosition, mBorderXMillimeter, mBorderYMillimeter, (pdfText)
+	
+	WshShell.Run(chr(34) & mFname_out & chr(34))
+	pgBar "end"
 
-	WshShell.Run mFname_out
 
 	Set pdfText = Nothing
 	Set pdf = Nothing
@@ -61,7 +64,16 @@ Sub AddPageNumber(fname_in, fromPage, toPage, startPageNumber, numberOfPages, pa
 
 End Sub
 
-
+Sub pgBar(strCommand)
+	select case strCommand
+		case "begin"
+			progressbar.innerHTML="Processando..."
+		case "end"
+			progressbar.style.color="MediumSeaGreen"
+			progressbar.innerHTML="Finalizado"			
+	end select
+	
+End Sub
 
 
 

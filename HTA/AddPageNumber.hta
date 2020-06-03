@@ -4,8 +4,8 @@
     <title>Numeraci&oacute;n de p&aacute;ginas</title>
     <meta http-equiv="x-ua-compatible" content="ie=9" />
     <script language="VBScript">
-		Sub window_onLoad()
-			CenterWindow 480, 480
+		Sub window_onLoad()			 
+		    CenterWindow 420, 480	        
 		End Sub</script>
 
     <HTA:APPLICATION
@@ -30,7 +30,6 @@
     		display:block;
     		padding:0.4em;
     	}
-    	
     	.column {
 		  float: left;
 		  width: 40%;
@@ -94,7 +93,7 @@
 </head>
  
 <body>
-    <h1>Paginaci&oacute;n de PDF</h1>
+    <h1>Paginaci&oacute;n de PDF</h1>    
     <form action="" method="">
     <div id="inputs">
     	<div><label for="fname_in">Selecciona fichero:</label>
@@ -134,7 +133,7 @@
 		<button type="button" onclick="AddPageNumber(fname_in, fromPage, toPage, startPageNumber, numberOfPages, pageNumberPosition)" id="RunButton" name="RunButton">Ejecutar</button></div>
 	</div>
 	</form>
-
+	<span id = "progressbar" style="float:right"></span>
 </body>
  
 </html>
