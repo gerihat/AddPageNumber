@@ -23,14 +23,14 @@ Sub CenterWindow( widthX, heightY )
     self.MoveTo (screen.Width - widthX)/2, (screen.Height - heightY)/2
 End Sub
 
-Sub AddPageNumber(fname_in, fromPage, toPage, startPageNumber, numberOfPages, pageNumberPosition)
+Sub AddPageNumber()
 	Set FSO = CreateObject("Scripting.FileSystemObject")
 	Set WshShell = CreateObject("WScript.Shell")
 
 	Set pdf = CreateObject("pdfforge.pdf.pdf")
 	Set pdfText  = CreateObject("pdfforge.pdf.pdfText")
 
-	mFname_in=fname_in.value
+	mFname_in=document.getElementByID("fname_in").value
 	if (mFname_in="") Then
 		msgbox "Debe seleccionar un fichero",vbExclamation,"Fichero no encontrado"
 		Exit Sub
@@ -41,20 +41,18 @@ Sub AddPageNumber(fname_in, fromPage, toPage, startPageNumber, numberOfPages, pa
 	pdfText.FontPath = WshShell.SpecialFolders("Fonts")
 	pdfText.FontSize = 18
 
-	mFromPage			= fromPage.value
-	mToPage				= toPage.value
-	mStartPageNumber	= startPageNumber.value
-	mNumberOfPages		= numberOfPages.value
-	mPageNumberPosition = pageNumberPosition.value
+	mFromPage			= document.getElementByID("fromPage").value
+	mToPage				= document.getElementByID("toPage").value
+	mStartPageNumber	= document.getElementByID("startPageNumber").value
+	mNumberOfPages		= document.getElementByID("numberOfPages").value
+	mPageNumberPosition = document.getElementByID("pageNumberPosition").value
 	mBorderXMillimeter 	= 10.0
 	mBorderYMillimeter 	= 10.0
 
-	pgBar "begin"
 	pdf.AddPageNumberToPDFFile mFname_in, mFname_out, mFromPage, mToPage, mStartPageNumber, mNumberOfPages, mPageNumberPosition, mBorderXMillimeter, mBorderYMillimeter, (pdfText)
-	
 	WshShell.Run(chr(34) & mFname_out & chr(34))
+	
 	pgBar "end"
-
 
 	Set pdfText = Nothing
 	Set pdf = Nothing
@@ -64,16 +62,23 @@ Sub AddPageNumber(fname_in, fromPage, toPage, startPageNumber, numberOfPages, pa
 
 End Sub
 
+
+Sub start()
+	pgBar "begin"
+	setTimeout "AddPageNumber()", 0
+End Sub
+
 Sub pgBar(strCommand)
 	select case strCommand
 		case "begin"
-			progressbar.innerHTML="Processando..."
+			progressbar.innerHTML="Procesando..."
 		case "end"
 			progressbar.style.color="MediumSeaGreen"
-			progressbar.innerHTML="Finalizado"			
+			progressbar.innerHTML="Finalizado"		
 	end select
 	
 End Sub
+
 
 
 
