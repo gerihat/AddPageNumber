@@ -1,10 +1,10 @@
 # AddPageNumber to PDF
 
-**HTA Application to add page numaer to a given PDF file**
+**HTA Application to add page number to a given PDF file**
 
 ## Initial considerations
 
-There are two different implementations, one use HTA interface (IE9) and the second use WSscript object in command line execution or drag & drop PDF file over script file.
+There are two different implementations, one use HTA interface (IE9) and the second use WScript object in command line execution or drag & drop PDF file over the script file.
 
 ## Prerequisites
 
@@ -17,16 +17,16 @@ There are two different implementations, one use HTA interface (IE9) and the sec
 
 Run **AddPageNumber.hta**
 
-App window GUI will opens with options panel to configure the numeration and the numerated PDF file will be saved in the same location with ´_pag´ added to the name.
+App window GUI will open with options panel to configure the numeration and the numerated PDF file will be saved in the same location with ´_pag´ added to the name.
 
 ***WSCript Version***
 
-Command line version or File Explorer drag & drop. 
+Command line version or File Explorer drag & drop. To configure the numeration options, you must edit the script file AddPageNumerber.vbs
 
 Command line script:
 ```c:\ wscript.exe AddPageNumber.vbs <Filename.PDF>```
 
-Also in the Windows File Explorer you can drag & drop the PDF file on AddPageNumer.vbs script
+Also in the Windows File Explorer you can drag & drop the PDF file on AddPageNumber.vbs script
 
 The numerated PDF file will be saved in the same location with ´_pag´ added to the name.
 
